@@ -16,10 +16,10 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
     
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v7
       with:
         python-version: '3.12'
     
@@ -79,9 +79,9 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
     
     - name: Trigger OpenShift build
-      if: github.ref == 'refs/heads/main'
+      if: github.ref == 'refs/heads/master'
       run: |
-        echo "OpenShift build triggered for main branch"
+        echo "OpenShift build triggered for master branch"
         # This is where OpenShift webhook calls would be placed in production
         # Example: curl -X POST $OPENSHIFT_WEBHOOK_URL
         # For this tutorial, OpenShift builds are triggered manually
